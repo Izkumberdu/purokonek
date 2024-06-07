@@ -169,7 +169,7 @@ class _HomepageState extends State<Homepage> {
           const Spacer(),
           GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, ' '); //NAVIGATE TO WASTE
+                Navigator.pushNamed(context, '/waste'); //NAVIGATE TO WASTE
               },
               child: buildOption(const Color(0xFFEEFEF4),
                   'assets/icons/trash_icon.png', 'Waste')),

@@ -12,6 +12,7 @@ import 'package:purokonek/Screens/maps_page.dart';
 import 'package:purokonek/Screens/onboarding.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:purokonek/Screens/waste.dart';
 import 'package:purokonek/screens/health.dart';
 
 void main() async {
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
       '/homepage': (context) => const Homepage(),
       '/chat': (context) => const ChatBot(),
       '/mapspage': (context) => const MapsPage(),
-      '/healthpage': (context) => const HealthPage()
+      '/healthpage': (context) => const HealthPage(),
+      '/waste': (context) => const Waste()
     });
   }
 }
