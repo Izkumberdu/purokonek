@@ -118,17 +118,26 @@ class _HomepageState extends State<Homepage> {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '');
+              Navigator.pushNamed(context, '/healthpage');
             },
             child: buildOption(const Color(0xFFFFF3EB),
                 'assets/icons/health_icon.png', 'Health'),
           ),
           const Spacer(),
-          buildOption(const Color(0xFFE9F6FF),
-              'assets/icons/documents_icon.png', 'Documents'),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, ' '); //NAVIGATE TO DOCU
+            },
+            child: buildOption(const Color(0xFFE9F6FF),
+                'assets/icons/documents_icon.png', 'Documents'),
+          ),
           const Spacer(),
-          buildOption(
-              const Color(0xFFEEFEF4), 'assets/icons/trash_icon.png', 'Waste'),
+          GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, ' '); //NAVIGATE TO WASTE
+              },
+              child: buildOption(const Color(0xFFEEFEF4),
+                  'assets/icons/trash_icon.png', 'Waste')),
           const Spacer(),
           GestureDetector(
             onTap: () {
