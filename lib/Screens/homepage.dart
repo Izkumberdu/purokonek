@@ -85,8 +85,13 @@ class _HomepageState extends State<Homepage> {
       color: Colors.white,
       child: Row(
         children: [
-          buildOption(const Color(0xFFFFF3EB), 'assets/icons/health_icon.png',
-              'Health'),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '');
+            },
+            child: buildOption(const Color(0xFFFFF3EB),
+                'assets/icons/health_icon.png', 'Health'),
+          ),
           const Spacer(),
           buildOption(const Color(0xFFE9F6FF),
               'assets/icons/documents_icon.png', 'Documents'),
@@ -94,11 +99,21 @@ class _HomepageState extends State<Homepage> {
           buildOption(
               const Color(0xFFEEFEF4), 'assets/icons/trash_icon.png', 'Waste'),
           const Spacer(),
-          buildOption(
-              const Color(0xFFF9F6ED), 'assets/icons/maps_icon.png', 'Maps'),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/mapspage');
+            },
+            child: buildOption(
+                const Color(0xFFF9F6ED), 'assets/icons/maps_icon.png', 'Maps'),
+          ),
           const Spacer(),
-          buildOption(const Color(0xFFF1E9FF), 'assets/icons/support_icon.png',
-              'Support'),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, '/chat');
+            },
+            child: buildOption(const Color(0xFFF1E9FF),
+                'assets/icons/support_icon.png', 'Support'),
+          ),
         ],
       ),
     );
