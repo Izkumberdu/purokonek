@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: const ChatBot(), routes: {
+    return MaterialApp(home: const Homepage(), routes: {
       '/onboarding': (context) => const Onboarding(),
       '/homepage': (context) => const Homepage(),
       '/chat': (context) => const ChatBot(),
