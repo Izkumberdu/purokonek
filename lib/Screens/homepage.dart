@@ -204,8 +204,10 @@ class _HomepageState extends State<Homepage> {
       width: screenSize.width,
       height: 95,
       decoration: BoxDecoration(
-        color: Colors.green,
         borderRadius: BorderRadius.circular(15),
+      ),
+      child: Center(
+        child: Image.asset('assets/images/comelec.png'),
       ),
     );
   }
