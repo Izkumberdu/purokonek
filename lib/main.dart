@@ -1,8 +1,10 @@
 import 'dart:io';
 
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:purokonek/Constants/API_KEY.dart';
+import 'package:purokonek/Constants/styles.dart';
 import 'package:purokonek/Functions/initGoogleMaps.dart';
 import 'package:purokonek/Screens/chat.dart';
 import 'package:purokonek/Screens/homepage.dart';
@@ -24,6 +26,17 @@ void main() async {
       initializeMapRenderer();
     }
   }
+  AwesomeNotifications().initialize(
+    null,
+    [
+      NotificationChannel(
+          channelKey: 'basic_channel',
+          channelName: 'PuroKonek',
+          channelDescription: 'Upcom Outage!',
+          defaultColor: kGreen)
+    ],
+    debug: true,
+  );
 
   runApp(const MyApp());
 }
