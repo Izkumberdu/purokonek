@@ -59,8 +59,7 @@ class _HealthPageState extends State<HealthPage> {
                     topRight: Radius.circular(30.0),
                   ),
                   child: Container(
-                    width: double
-                        .infinity, // Use double.infinity to match screen width
+                    width: double.infinity,
                     height: 700,
                     decoration: const BoxDecoration(
                       color: Colors.white,
@@ -70,9 +69,27 @@ class _HealthPageState extends State<HealthPage> {
                       ),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.all(30),
-                      child: Column(
-                        children: [Text('data')],
+                      padding: const EdgeInsets.all(30),
+                      child: Align(
+                        alignment: Alignment.topLeft,
+                        child: Column(
+                          children: [
+                            Text(
+                              'Hospital & Ambulance Directory',
+                              style: GoogleFonts.inter(
+                                  fontSize: 20, fontWeight: FontWeight.bold),
+                            ),
+                            const SizedBox(height: 10),
+                            directoryTile('Kamputhaw Emergency Response Team',
+                                'Kamputhaw Barangay Road', '(032)231 4411'),
+                            const SizedBox(height: 10),
+                            directoryTile(
+                                'Perpetual Succour Hospital of Cebu, Inc.',
+                                ' Gorordo Avenue',
+                                '(032)233 8620'),
+                            const SizedBox(height: 10),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -80,6 +97,74 @@ class _HealthPageState extends State<HealthPage> {
               ],
             ),
           )
+        ],
+      ),
+    );
+  }
+
+  Container directoryTile(String name, String address, String phoneNumber) {
+    return Container(
+      width: 500,
+      height: 100,
+      padding:
+          const EdgeInsets.all(10.0), // Adding some padding for better layout
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 0,
+            blurRadius: 1,
+            offset: Offset(0, 0), // changes position of shadow
+          ),
+        ],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Text(
+            name,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          Row(
+            children: [
+              Image.asset(
+                'assets/icons/mark.png',
+                width: 20,
+                height: 20,
+              ),
+              SizedBox(width: 5), // Adding space between icon and text
+              Expanded(
+                child: Text(
+                  address,
+                  style: TextStyle(fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: [
+              Image.asset(
+                'assets/icons/phone.png',
+                width: 20,
+                height: 20,
+              ),
+              SizedBox(width: 5), // Adding space between icon and text
+              Expanded(
+                child: Text(
+                  phoneNumber,
+                  style: TextStyle(fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
