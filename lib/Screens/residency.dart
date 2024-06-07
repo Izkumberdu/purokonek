@@ -192,7 +192,7 @@ class _ProofResidencyState extends State<ProofResidency> {
                                           prefixIcon: SizedBox(
                                             width: 18,
                                             height: 20,
-                                            child: Image.asset("assets/icons/phone.png"),
+                                            child: Image.asset("assets/icons/call_phone.png"),
                                           ),
                                             enabledBorder: OutlineInputBorder(
                                                 borderSide: const BorderSide(
