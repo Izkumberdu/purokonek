@@ -20,14 +20,14 @@ class _ChatState extends State<ChatBot> {
   ChatUser currentUser = ChatUser(id: "0", firstName: "Joel");
   ChatUser geminiUser = ChatUser(
       id: "1",
-      firstName: "Customer Service Assistant",
+      firstName: "PuroKonek Support",
       profileImage: "assets/images/profile.png");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text("PowerEye Support Chat"),
+        title: const Text("PuroKonek Support"),
       ),
       body: _buildUI(),
     );
@@ -110,7 +110,7 @@ class _ChatState extends State<ChatBot> {
       ChatMessage chatMessage = ChatMessage(
           user: currentUser,
           createdAt: DateTime.now(),
-          text: "Describe this image",
+          text: "",
           medias: [
             ChatMedia(url: file.path, fileName: "", type: MediaType.image),
           ]);

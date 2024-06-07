@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -13,7 +14,41 @@ class Homepage extends StatefulWidget {
 
 class _HomepageState extends State<Homepage> {
   @override
+  void initState() {
+    AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+      if (!isAllowed) {
+        AwesomeNotifications().requestPermissionToSendNotifications();
+      }
+    });
+    super.initState();
+  }
+
+  triggerNotifications1() {
+    AwesomeNotifications().createNotification(
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'basic_channel',
+            title: 'Free Operation Tuli this Saturday!',
+            body:
+                'The Barangay is holding a Free Operation Tuli this Saturday on Alumnos Gym!'));
+  }
+
+  triggerNotifications2() {
+    AwesomeNotifications().createNotification(
+        schedule: NotificationAndroidCrontab.minutely(
+            referenceDateTime: DateTime.now()),
+        content: NotificationContent(
+            id: 10,
+            channelKey: 'basic_channel',
+            title: 'Earth Day Celebration',
+            body:
+                'The Barangay is participating in the Earth Day Celebration, be sure to turn off electronics on 10:00AM!'));
+  }
+
+  @override
   Widget build(BuildContext context) {
+    triggerNotifications1();
+    triggerNotifications2();
     final Size screenSize = MediaQuery.of(context).size;
     String formattedDate = DateFormat('MMMM d, yyyy').format(DateTime.now());
 
