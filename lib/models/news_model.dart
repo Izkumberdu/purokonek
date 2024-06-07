@@ -37,7 +37,7 @@ class NewsModel {
       color: const Color(0xFFF9F6ED),
       title: 'More Barangay Services?',
       description:
-          'PuroKonek help you look for MORE SERVICES near you with the app’s new update!',
+          "PuroKonek help you look for MORE SERVICES near you with the app’s new update!",
     ));
 
     news.add(NewsModel(
