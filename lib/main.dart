@@ -3,6 +3,7 @@ import 'package:flutter_gemini/flutter_gemini.dart';
 import 'package:purokonek/Constants/API_KEY.dart';
 import 'package:purokonek/Screens/chat.dart';
 import 'package:purokonek/Screens/homepage.dart';
+import 'package:purokonek/Screens/maps_page.dart';
 import 'package:purokonek/Screens/onboarding.dart';
 
 void main() {
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       '/onboarding': (context) => const Onboarding(),
       '/homepage': (context) => const Homepage(),
       '/chat': (context) => const ChatBot(),
+      '/mapspage': (context) => const MapsPage(),
     });
   }
 }
