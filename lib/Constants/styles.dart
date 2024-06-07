@@ -8,6 +8,7 @@ const Color kBlack = Color(0xFF121212);
 const Color kGrey = Color(0xff777777);
 const Color kLightYelloy = Color(0xFFFAFF00);
 const Color kGreen = Color(0xFF26C165);
+const Color kLightGreen = Color(0xFF46CE7C);
 
 final SenMedium = GoogleFonts.sen(
   color: kBlack,
