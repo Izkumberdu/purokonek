@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:purokonek/models/news_model.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
@@ -54,7 +55,7 @@ class _HomepageState extends State<Homepage> {
 
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           width: screenSize.width,
           height: screenSize.height,
           child: Padding(
@@ -63,7 +64,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 dateAndNotif(formattedDate),
                 const SizedBox(height: 10),
-                highlightBar(screenSize),
+                highlightBar(screenSize), //NEEDS WORK
                 const SizedBox(height: 10),
                 servicesHeader(),
                 const SizedBox(height: 10),
@@ -81,24 +82,54 @@ class _HomepageState extends State<Homepage> {
   }
 
   Expanded newsList(Size screenSize) {
+    List<NewsModel> news = NewsModel.getNews();
     return Expanded(
       child: ListView.builder(
-        itemCount: 4,
+        itemCount: news.length,
         itemBuilder: (context, index) {
-          // Return a row for each item in the list
-          return Row(
-            children: [
-              Container(
-                width: 60,
-                height: 60, // Adjust height as needed
-                color: Colors.blue, // Adjust color as needed
-              ),
-              SizedBox(width: 10), // Add spacing between container and text
-              Text(
-                'Some text', // Replace with your actual text
-                style: TextStyle(fontSize: 16),
-              ),
-            ],
+          NewsModel item = news[index];
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Container(
+                  width: 60,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: item.color,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      width: 30,
+                      height: 30,
+                      item.icon,
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        item.title,
+                        style: GoogleFonts.inter(
+                            fontSize: 16, fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        item.description,
+                        style: GoogleFonts.inter(fontSize: 14),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -122,17 +153,26 @@ class _HomepageState extends State<Homepage> {
         children: [
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, '');
+              Navigator.pushNamed(context, '/healthpage');
             },
             child: buildOption(const Color(0xFFFFF3EB),
                 'assets/icons/health_icon.png', 'Health'),
           ),
           const Spacer(),
-          buildOption(const Color(0xFFE9F6FF),
-              'assets/icons/documents_icon.png', 'Documents'),
+          GestureDetector(
+            onTap: () {
+              Navigator.pushNamed(context, ' '); //NAVIGATE TO DOCU
+            },
+            child: buildOption(const Color(0xFFE9F6FF),
+                'assets/icons/documents_icon.png', 'Documents'),
+          ),
           const Spacer(),
-          buildOption(
-              const Color(0xFFEEFEF4), 'assets/icons/trash_icon.png', 'Waste'),
+          GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, ' '); //NAVIGATE TO WASTE
+              },
+              child: buildOption(const Color(0xFFEEFEF4),
+                  'assets/icons/trash_icon.png', 'Waste')),
           const Spacer(),
           GestureDetector(
             onTap: () {
@@ -159,7 +199,7 @@ class _HomepageState extends State<Homepage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         squareOption(color, iconPath),
-        SizedBox(height: 4), // Add some spacing between the icon and the label
+        const SizedBox(height: 4),
         Text(
           label,
           style: GoogleFonts.inter(fontWeight: FontWeight.w500),
@@ -179,8 +219,8 @@ class _HomepageState extends State<Homepage> {
       child: Center(
         child: Image.asset(
           iconPath,
-          width: 30, // Adjust this value to your preference for icon size
-          height: 30, // Adjust this value to your preference for icon size
+          width: 30,
+          height: 30,
         ),
       ),
     );
@@ -200,7 +240,7 @@ class _HomepageState extends State<Homepage> {
       height: 95,
       decoration: BoxDecoration(
         color: Colors.green,
-        borderRadius: BorderRadius.circular(15), // Adjust the radius as needed
+        borderRadius: BorderRadius.circular(15),
       ),
     );
   }
@@ -219,19 +259,19 @@ class _HomepageState extends State<Homepage> {
               const SizedBox(height: 8),
               Text(formattedDate,
                   style: GoogleFonts.inter(
-                      fontSize: 14, color: Color(0xFFC9C9C9))),
+                      fontSize: 14, color: const Color(0xFFC9C9C9))),
             ],
           ),
         ),
         const Spacer(),
-        Container(
+        SizedBox(
           width: 50,
           height: 50,
           child: Center(
             child: Image.asset(
               'assets/icons/notif_icon.png',
-              width: 40, // Adjust this value to your preference for icon size
-              height: 40, // Adjust this value to your preference for icon size
+              width: 40,
+              height: 40,
             ),
           ),
         )
