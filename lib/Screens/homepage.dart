@@ -161,7 +161,7 @@ class _HomepageState extends State<Homepage> {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, ' '); //NAVIGATE TO DOCU
+              Navigator.pushNamed(context, '/documentpage'); //NAVIGATE TO DOCU
             },
             child: buildOption(const Color(0xFFE9F6FF),
                 'assets/icons/documents_icon.png', 'Documents'),
